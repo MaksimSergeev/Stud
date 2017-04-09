@@ -1,2 +1,2 @@
-# Stud
+# Study
 # MVC
