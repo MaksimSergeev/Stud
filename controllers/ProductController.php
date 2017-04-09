@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Hydroid
- * Date: 08.04.2017
- * Time: 16:37
- */
+
+
+class ProductController {
+
+    public function actionList()
+    {
+        echo "ProductController -> actionList";
+        return true;
+    }
+}
