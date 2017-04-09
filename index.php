@@ -1,14 +1,14 @@
 <?php
 //FRONT CONTROLLER
 
-//GENERAL SETTINGS
+//general settings
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-//CONNECT FILES
+//connect file
 define('ROOT', dirname(__FILE__));
 require_once(ROOT.'/components/Router.php');
-//CONNECTED TO DATABASE
+//connected to database
 
-//CALL ROUTER
+//call Router
 $router = new Router();
 $router->run();
