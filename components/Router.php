@@ -27,12 +27,18 @@ class Router
             //comparison $uriPattern and $uri
             if (preg_match("~$uriPattern~", $uri))
             {
-                //make a key controller and action
-                $segments = explode('/', $path);
+                //take internal path from the external by rule
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+
+                //define controller, action and parameters
+                //array
+                $segments = explode('/', $internalRoute);
 
                 $controllerName = ucfirst(array_shift($segments)).'Controller';
 
                 $actionName = 'action'.ucfirst(array_shift($segments));
+
+                $parameters = $segments;
 
                 // connect file class-controller
                 $controllerFile = ROOT.'/controllers/'.$controllerName.'.php';
@@ -45,7 +51,9 @@ class Router
                 //create object
                 $controllerObject = new $controllerName;
                 //call method(action) from controllerObject
-                $result = $controllerObject->$actionName();
+                //result of some action
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+
                 if ($result != null) {
                     break;
                 }

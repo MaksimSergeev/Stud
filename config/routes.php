@@ -1,5 +1,7 @@
 <?php
 return array(
-    'news'=>'news/index', // call actionIndex in NewsControllers
-    'product'=>'product/list', // call actionList in ProductController
+
+    'news/([0-9]+)' => 'news/view/$1',
+
+    'news' => 'news/index', // call actionIndex in NewsController
     );

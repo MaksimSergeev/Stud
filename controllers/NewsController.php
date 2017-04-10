@@ -1,10 +1,27 @@
 <?php
 
+include_once ROOT. '/models/News.php';
+
 class NewsController {
 
     public function actionIndex()
     {
-    echo "NewsController -> actionIndex";
-    return true;
+        $newsList = array();
+        $newsList = News::getNewsList();
+
+    echo "<pre>";
+    print_r($newsList);
+    echo "<pre>";
+    }
+
+    public function actionView($id)
+    {
+        if ($id) {
+            $newsItem = News::getNewsItemById($id);
+        }
+        echo "<pre>";
+        print_r($newsItem);
+        echo "<pre>";
+        echo 'actionView';
     }
 }
